@@ -1,0 +1,35 @@
+nginx:
+  image: nginx:1.13.8
+  links:
+    - nexus:nexus
+    - jenkins:jenkins
+    - registry:registry
+  ports:
+    - 80:80
+    - 443:443
+  volumes:
+    - ./volumes/nginx-logs:/app/nginx/logs
+    - ./volumes/nginx-conf:/etc/nginx:ro
+    - /etc/letsencrypt:/etc/letsencrypt:ro
+    - /www:/www:ro
+    - /root/work/dhparam/dhparam.pem:/root/work/dhparam/dhparam.pem:ro
+
+jenkins:
+  image: eulerproject/jenkins:2.141
+  volumes:
+    - /usr/lib64/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /usr/bin/docker:/usr/bin/docker
+    - ./volumes/jenkins-data:/var/jenkins_home:rw
+  extra_hosts:
+    - "repo.eulerproject.io:172.17.0.1"
+
+nexus:
+  image: sonatype/nexus3:3.13.0
+  volumes:
+    - ./volumes/nexus-data:/nexus-data
+
+registry:
+  image: eulerproject/euler-cloud-registry:1.0.0
+  volumes:
+      - ./volumes/registry/config:/app/config
