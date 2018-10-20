@@ -1,8 +1,0 @@
-server {
-    listen       80;
-    server_name cfrost.net www.cfrost.net;
-	index index.html index.htm index.jsp;
-	root /www/about-me;
-
-	access_log  /app/nginx/logs/about-me-access.log;
-}
