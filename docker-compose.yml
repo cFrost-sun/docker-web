@@ -3,7 +3,7 @@ nginx:
   links:
     - nexus:nexus
     - jenkins:jenkins
-    - registry:registry
+    #- registry:registry
   ports:
     - 80:80
     - 443:443
@@ -12,7 +12,7 @@ nginx:
     - ./volumes/nginx-conf:/etc/nginx:ro
     - /etc/letsencrypt:/etc/letsencrypt:ro
     - /www:/www:ro
-    - /root/work/dhparam/dhparam.pem:/root/work/dhparam/dhparam.pem:ro
+    - /root/work/dhparam:/root/work/dhparam:ro
 
 jenkins:
   image: eulerproject/jenkins:2.141
@@ -29,7 +29,7 @@ nexus:
   volumes:
     - ./volumes/nexus-data:/nexus-data
 
-registry:
-  image: eulerproject/euler-cloud-registry:1.0.0
-  volumes:
-      - ./volumes/registry/config:/app/config
+#registry:
+#  image: eulerproject/euler-cloud-registry:1.0.0
+#  volumes:
+#      - ./volumes/registry/config:/app/config
