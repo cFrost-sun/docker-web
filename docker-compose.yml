@@ -25,7 +25,7 @@ jenkins:
     - "repo.eulerproject.io:172.17.0.1"
 
 nexus:
-  image: sonatype/nexus3:3.15.2
+  image: sonatype/nexus3:3.18.1
   volumes:
     - ./volumes/nexus-data:/nexus-data
 
