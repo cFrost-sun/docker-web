@@ -1,7 +1,2 @@
-/volumes/*
-!/volumes/nginx
-!/volumes/nginx/conf.d/
-!/volumes/nginx-conf
-/volumes/nginx-conf/*
-!/volumes/nginx-conf/conf.d/
+/volumes/nginx-conf
 /www/
