@@ -8,7 +8,7 @@ services:
     volumes:
       - ./volumes/nginx/conf/conf.d:/etc/nginx/conf.d:ro
       - ./volumes/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./volumes/nginx/logs:/app/nginx/logs:rw
+      - /data/docker/volumes/web/nginx/logs:/app/nginx/logs:rw
       - /opt/nginx/tls/dhparams.pem:/etc/nginx/dhparams.pem:ro
       - /etc/letsencrypt:/etc/letsencrypt:ro
 
@@ -22,8 +22,8 @@ services:
 #    extra_hosts:
 #      - "repo.eulerproject.io:nexus"
 
-  # nexus:
-  #   image: sonatype/nexus3:3.37.3
-  #   volumes:
-  #     - /data/docker/volumes/ci/nexus/data:/nexus-data
+  nexus:
+    image: registry-vpc.cn-shenzhen.aliyuncs.com/euler-mirrors/nexus3:3.37.3
+    volumes:
+      - /data/docker/volumes/ci/nexus/data:/nexus-data
 
