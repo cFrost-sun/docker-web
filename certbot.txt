@@ -1,0 +1,25 @@
+sudo docker run -it --rm --name certbot \
+-v "/etc/letsencrypt:/etc/letsencrypt" \
+-v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
+registry-vpc.cn-shenzhen.aliyuncs.com/euler-mirrors/certbot \
+certonly \
+--manual \
+--preferred-challenges dns \
+--cert-name eulerproject.io \
+-d eulerproject.io,*.eulerproject.io \
+--agree-tos \
+--email admin@eulerproject.io \
+--force-renewal;
+
+sudo docker run -it --rm --name certbot \
+-v "/etc/letsencrypt:/etc/letsencrypt" \
+-v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
+registry-vpc.cn-shenzhen.aliyuncs.com/euler-mirrors/certbot \
+certonly \
+--manual \
+--preferred-challenges dns \
+--cert-name eulerframework.net \
+-d eulerframework.net,*.eulerframework.net \
+--agree-tos \
+--email admin@eulerproject.io \
+--force-renewal;
