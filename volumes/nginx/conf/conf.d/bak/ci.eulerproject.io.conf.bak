@@ -5,7 +5,7 @@ server {
 }
 
 server {
-        listen       443 ssl;
+        listen 443 ssl;
         server_name ci.eulerproject.io;
         
         ssl_certificate /etc/letsencrypt/live/eulerproject.io/fullchain.pem;

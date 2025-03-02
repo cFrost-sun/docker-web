@@ -1,5 +1,5 @@
 server {
-        listen       443 ssl;
+        listen 443 ssl;
         server_name docker-registry.eulerproject.io;
 
         ssl_certificate /etc/letsencrypt/live/eulerproject.io/fullchain.pem;
